@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "command": "deliver",
+  "status": "pending",
+  "receiptId": "ec2ca915-aea6-4083-93df-054d733c5f54",
+  "input": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\candidate.json",
+  "output": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html"
+}
