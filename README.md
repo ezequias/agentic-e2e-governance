@@ -127,6 +127,12 @@ specification.md   # Full architecture and governance rationale
 - [Element-by-element governance guide](governance-element-guide.md)
 - [Explainability and traceability pillars](explainability_pillars.png)
 
+## Interactive previews
+
+This screenshot brings together the Archify governance explainer, blast-radius matrix, architecture overview, and operational workflow.
+
+![Archify previews of the governance explainer, matrix, architecture overview, and workflow](screenshot.png)
+
 ## Next implementation milestones
 
 1. Define action-specific schemas, permissions, risk rules, and audit requirements.
