@@ -1,0 +1,251 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Agentic IT Operations Governance Flow",
+    "animation": "trace",
+    "visual_preset": "blueprint",
+    "quality_profile": "showcase",
+    "output": ".archify/workflow-it-governance-20261126-1132/it-governance-flow.html"
+  },
+  "lanes": [
+    {
+      "id": "interfaces",
+      "label": "Channels & State"
+    },
+    {
+      "id": "reasoning",
+      "label": "Probabilistic Intent"
+    },
+    {
+      "id": "customs",
+      "label": "Deterministic Customs",
+      "variant": "exception"
+    },
+    {
+      "id": "execution",
+      "label": "Execution & Audit"
+    }
+  ],
+  "phases": [
+    {
+      "id": "input",
+      "label": "Input + context",
+      "fromCol": 0,
+      "toCol": 1
+    },
+    {
+      "id": "proposal",
+      "label": "Intent proposal",
+      "fromCol": 2,
+      "toCol": 2,
+      "variant": "emphasis"
+    },
+    {
+      "id": "containment",
+      "label": "Containment & authorization",
+      "fromCol": 3,
+      "toCol": 4,
+      "variant": "security"
+    },
+    {
+      "id": "operation",
+      "label": "Execute + persist",
+      "fromCol": 5,
+      "toCol": 5,
+      "variant": "dashed"
+    }
+  ],
+  "groups": [
+    {
+      "id": "state_zone",
+      "label": "State source",
+      "lane": "interfaces",
+      "fromCol": 0,
+      "toCol": 1,
+      "variant": "dashed"
+    },
+    {
+      "id": "quarantine",
+      "label": "Governance quarantine",
+      "lane": "customs",
+      "fromCol": 3,
+      "toCol": 4,
+      "variant": "security"
+    },
+    {
+      "id": "world_changes",
+      "label": "Deterministic action",
+      "lane": "execution",
+      "fromCol": 5,
+      "toCol": 5,
+      "variant": "dashed"
+    }
+  ],
+  "mainPath": [
+    "input",
+    "state",
+    "intent",
+    "triage",
+    "inspect",
+    "hitl",
+    "action"
+  ],
+  "nodes": [
+    {
+      "id": "input",
+      "lane": "interfaces",
+      "col": 0,
+      "type": "external",
+      "label": "Operation Request",
+      "sublabel": "n8n webhook or channel",
+      "width": 132
+    },
+    {
+      "id": "state",
+      "lane": "interfaces",
+      "col": 1,
+      "type": "database",
+      "label": "State Layer",
+      "sublabel": "DW, RAG, Event history",
+      "tag": "single source of truth",
+      "width": 150
+    },
+    {
+      "id": "intent",
+      "lane": "reasoning",
+      "col": 2,
+      "type": "backend",
+      "label": "LLM / SLM",
+      "sublabel": "Generate JSON intent",
+      "tag": "untrusted proposal",
+      "width": 150
+    },
+    {
+      "id": "triage",
+      "lane": "customs",
+      "col": 3,
+      "type": "security",
+      "label": "Triage",
+      "sublabel": "Blast radius + read/write",
+      "width": 132
+    },
+    {
+      "id": "inspect",
+      "lane": "customs",
+      "col": 4,
+      "type": "security",
+      "label": "Inspect",
+      "sublabel": "Pydantic schema + sanitize",
+      "width": 132
+    },
+    {
+      "id": "hitl",
+      "lane": "customs",
+      "col": 5,
+      "type": "security",
+      "label": "Dry-Run + HITL",
+      "sublabel": "Durable human gate",
+      "tag": "medium / high risk",
+      "width": 150
+    },
+    {
+      "id": "action",
+      "lane": "execution",
+      "col": 5,
+      "type": "messagebus",
+      "label": "Typed Action",
+      "sublabel": "API, ERP or MCP server",
+      "tag": "authorized payload",
+      "width": 150
+    },
+    {
+      "id": "audit",
+      "lane": "execution",
+      "col": 4,
+      "type": "database",
+      "label": "Immutable Audit",
+      "sublabel": "Trace, spans, events",
+      "width": 132
+    }
+  ],
+  "edges": [
+    {
+      "id": "channel-state",
+      "from": "input",
+      "to": "state",
+      "label": "read context",
+      "variant": "default"
+    },
+    {
+      "id": "state-intent",
+      "from": "state",
+      "to": "intent",
+      "label": "context injection",
+      "variant": "emphasis"
+    },
+    {
+      "id": "intent-triage",
+      "from": "intent",
+      "to": "triage",
+      "label": "intent proposal",
+      "variant": "emphasis"
+    },
+    {
+      "id": "triage-inspect",
+      "from": "triage",
+      "to": "inspect",
+      "label": "classified intent",
+      "variant": "security"
+    },
+    {
+      "id": "inspect-hitl",
+      "from": "inspect",
+      "to": "hitl",
+      "label": "validated payload",
+      "variant": "security"
+    },
+    {
+      "id": "hitl-action",
+      "from": "hitl",
+      "to": "action",
+      "label": "approved",
+      "variant": "emphasis"
+    },
+    {
+      "id": "action-audit",
+      "from": "action",
+      "to": "audit",
+      "label": "state update",
+      "variant": "dashed"
+    },
+    {
+      "id": "audit-state",
+      "from": "audit",
+      "to": "state",
+      "label": "refresh source of truth",
+      "variant": "dashed",
+      "role": "return"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "Containment Rule",
+      "items": [
+        "The LLM cannot execute or write directly",
+        "Every mutation crosses all customs gates",
+        "High-risk actions require an audited human decision"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Operational Evidence",
+      "items": [
+        "Global trace and span IDs connect every stage",
+        "Temporal checkpoints preserve durable HITL state",
+        "State updates close the loop with immutable events"
+      ]
+    }
+  ]
+}

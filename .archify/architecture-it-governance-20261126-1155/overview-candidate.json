@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "E2E Agentic Governance Overview",
+    "animation": "trace",
+    "visual_preset": "blueprint",
+    "quality_profile": "showcase",
+    "output": ".archify/architecture-it-governance-20261126-1155/e2e-agentic-it-operations.html"
+  },
+  "components": [
+    {
+      "id": "state",
+      "type": "database",
+      "label": "Layer 1: State",
+      "sublabel": "DW / Vector DB / Event History",
+      "pos": [450, 50],
+      "size": [540, 100],
+      "tag": "Source of truth"
+    },
+    {
+      "id": "intent",
+      "type": "backend",
+      "label": "Layer 2: Intent - LLM",
+      "sublabel": "Reasoning and JSON proposal",
+      "pos": [450, 230],
+      "size": [540, 100],
+      "tag": "Probabilistic / untrusted"
+    },
+    {
+      "id": "triage",
+      "type": "security",
+      "label": "3.1 Triage",
+      "sublabel": "Blast radius / read vs. mutate",
+      "pos": [110, 420],
+      "size": [300, 100],
+      "tag": "Gate 1"
+    },
+    {
+      "id": "inspect",
+      "type": "security",
+      "label": "3.2 Inspect",
+      "sublabel": "Typed schema / sanitization",
+      "pos": [570, 420],
+      "size": [300, 100],
+      "tag": "Gate 2"
+    },
+    {
+      "id": "testing",
+      "type": "security",
+      "label": "3.3 Test + HITL",
+      "sublabel": "Dry-run / human approval",
+      "pos": [1030, 420],
+      "size": [300, 100],
+      "tag": "Gate 3"
+    },
+    {
+      "id": "action",
+      "type": "messagebus",
+      "label": "Layer 4: Action",
+      "sublabel": "Typed connectors / MCP servers",
+      "pos": [450, 680],
+      "size": [540, 100],
+      "tag": "Deterministic execution"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "security-group",
+      "label": "Layer 3: Deterministic Customs / Quarantine",
+      "wraps": ["triage", "inspect", "testing"],
+      "pad": 20
+    }
+  ],
+  "connections": [
+    {
+      "from": "state",
+      "to": "intent",
+      "label": "1. Context injection / state read",
+      "variant": "emphasis"
+    },
+    {
+      "from": "intent",
+      "to": "triage",
+      "label": "2. Untrusted intent proposal",
+      "variant": "security"
+    },
+    {
+      "from": "triage",
+      "to": "inspect",
+      "label": "Risk classified",
+      "variant": "security"
+    },
+    {
+      "from": "inspect",
+      "to": "testing",
+      "label": "Validated payload",
+      "variant": "security"
+    },
+    {
+      "from": "testing",
+      "to": "action",
+      "label": "3. Authorized payload",
+      "variant": "emphasis"
+    },
+    {
+      "from": "action",
+      "to": "state",
+      "label": "4. State update / immutable event",
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "left",
+      "route": "orthogonal-v",
+      "via": [[35, 730], [35, 100]]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "Governance invariant",
+      "items": [
+        "The LLM proposes; it never executes mutations",
+        "Every action crosses the deterministic customs gates",
+        "Medium and high risk pause for human approval",
+        "Element guide: governance-element-guide.md"
+      ]
+    }
+  ]
+}

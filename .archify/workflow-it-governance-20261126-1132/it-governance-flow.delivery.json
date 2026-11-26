@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "fb682bde-b5c8-4ed6-972c-9494a05380ba",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\candidate.json",
+  "output": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html",
+  "specification": {
+    "sha256": "2f57f49ac78aedd78581ec6be224fe65e958c773485cb33a5ca267f53360f309",
+    "bytes": 5598
+  },
+  "artifact": {
+    "sha256": "e77fa82ca495abab0a455396487202338c89410f9e3479bd496546fbab797e98",
+    "bytes": 846954
+  }
+}

@@ -5,20 +5,23 @@
   "status": "fail",
   "type": "workflow",
   "quality": "showcase",
-  "startedAt": "2026-11-26T14:44:49.447Z",
+  "startedAt": "2026-11-26T14:51:50.814Z",
   "specification": {
     "path": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\candidate.json",
-    "sha256": "7929f5b3f9d830b7f03a5637a505372299c927aae444c93e9ce2735000633160",
-    "bytes": 7397
+    "sha256": "2f57f49ac78aedd78581ec6be224fe65e958c773485cb33a5ca267f53360f309",
+    "bytes": 5598
   },
   "artifact": {
-    "path": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html"
+    "path": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html",
+    "sha256": "e77fa82ca495abab0a455396487202338c89410f9e3479bd496546fbab797e98",
+    "bytes": 846954
   },
   "stages": {
     "validate": {
-      "status": "fail",
-      "exitCode": 1,
+      "status": "pass",
+      "exitCode": 0,
       "durationMs": null,
+      "execution": "embedded-in-deliver",
       "command": [
         "C:\\Program Files\\nodejs\\node.exe",
         "C:\\Users\\CARREFOUR\\.agents\\skills\\archify\\bin\\archify.mjs",
@@ -32,57 +35,61 @@
       ],
       "receipt": {
         "schemaVersion": 1,
-        "ok": false,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "2f57f49ac78aedd78581ec6be224fe65e958c773485cb33a5ca267f53360f309",
+          "bytes": 5598
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 6195,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\CARREFOUR\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "deliver",
+        "workflow",
+        "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\candidate.json",
+        "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "44ff9dd0-59d4-4200-a3dd-672b5d669bfd",
+        "ok": true,
         "command": "deliver",
-        "receiptId": "ec2ca915-aea6-4083-93df-054d733c5f54",
-        "stage": "render",
         "type": "workflow",
         "input": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\candidate.json",
         "output": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html",
-        "error": "Workflow edge \"reject-intent\" cannot satisfy route preset \"return-left\": candidate violates perpendicular endpoint-side direction.",
-        "diagnostics": [
-          {
-            "code": "workflow/route-preset-conflict",
-            "severity": "error",
-            "message": "Workflow edge \"reject-intent\" cannot satisfy route preset \"return-left\": candidate violates perpendicular endpoint-side direction.",
-            "subject": {
-              "diagramType": "workflow",
-              "edge": "reject-intent",
-              "from": "reject",
-              "to": "intent",
-              "route": "return-left"
-            },
-            "evidence": {
-              "invariant": "perpendicular endpoint-side direction",
-              "attemptedCandidateFamily": "return-left",
-              "points": [
-                [
-                  384.6,
-                  378
-                ],
-                [
-                  347.6,
-                  378
-                ],
-                [
-                  347.6,
-                  286
-                ],
-                [
-                  450.6,
-                  286
-                ]
-              ],
-              "fromSide": "left",
-              "toSide": "bottom",
-              "requiredEndpointStubPx": 8,
-              "requiredInteriorSegmentPx": 16,
-              "requiredDirectClearancePx": 28
-            },
-            "supportedFixes": []
-          }
-        ],
-        "provenance": "absent",
+        "specification": {
+          "sha256": "2f57f49ac78aedd78581ec6be224fe65e958c773485cb33a5ca267f53360f309",
+          "bytes": 5598
+        },
+        "artifact": {
+          "sha256": "e77fa82ca495abab0a455396487202338c89410f9e3479bd496546fbab797e98",
+          "bytes": 846954
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        },
         "update": {
           "status": "unavailable",
           "installedVersion": null,
@@ -94,12 +101,225 @@
           "noticeText": null,
           "reason": "disabled"
         }
-      },
-      "execution": "embedded-in-deliver"
+      }
     },
-    "deliver": {
-      "status": "not-run",
-      "execution": "blocked-by-validate"
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 1621,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\CARREFOUR\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "check",
+        "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html",
+        "artifact": {
+          "sha256": "e77fa82ca495abab0a455396487202338c89410f9e3479bd496546fbab797e98",
+          "bytes": 846954
+        },
+        "checks": [
+          {
+            "name": "single_svg",
+            "ok": true,
+            "details": [
+              "found 1 <svg> block(s)"
+            ]
+          },
+          {
+            "name": "finite_svg",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "orthogonal_arrows",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "label_route_clearance",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_crossings",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_corridors",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "container_border_runs",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "route_rhythm",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "legend_clearance",
+            "ok": true,
+            "details": []
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "showcase",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 0
+          },
+          "metrics": {
+            "properCrossings": 0,
+            "resolvedCrossovers": 0,
+            "ambiguousCorridors": 0,
+            "arrowheadCollisions": 0,
+            "containerBorderRuns": 0,
+            "labelRouteClearanceIssues": 0,
+            "labelCanvasOverflowIssues": 0,
+            "minLabelRouteClearance": 19.2,
+            "desktopReadabilityIssues": 0,
+            "viewportHeightIssues": 0,
+            "minProjectedNodeTextPx": 6.22099915325995,
+            "maxBends": 0,
+            "routesOverSuggestedBends": 0,
+            "maxStretch": 1,
+            "routesOverSuggestedStretch": 0,
+            "minSegmentPx": 19,
+            "minInteriorSegmentPx": null,
+            "shortSegmentCount": 0,
+            "shortEndpointSegmentCount": 0,
+            "shortInteriorSegmentCount": 0,
+            "microSegmentCount": 0
+          },
+          "suggestedLimits": {
+            "bendsPerRelationship": 2,
+            "stretch": 1.35,
+            "segmentPx": 16,
+            "microSegmentPx": 8
+          },
+          "routeReview": {
+            "crossings": [],
+            "detours": []
+          },
+          "leadingSpace": {
+            "measured": false,
+            "reviewSuggested": false
+          },
+          "desktopReadability": {
+            "budgetBasis": "legacy-930",
+            "readerContract": "declared-wide-v1",
+            "availableDiagramWidth": 930,
+            "actualBudgetPx": 930,
+            "limit": "legacy",
+            "requestedTargetPx": null,
+            "requestedTargetMet": null,
+            "hardFloorPx": 6,
+            "hardFloorMet": true,
+            "minimumOwner": {
+              "kind": "node",
+              "id": "inspect"
+            },
+            "minimumSourceTextPx": 7.9,
+            "minimumProjectedTextPx": 6.22099915325995,
+            "semanticTextCount": 24
+          },
+          "issues": []
+        },
+        "provenance": "current",
+        "deliveryReceiptId": "44ff9dd0-59d4-4200-a3dd-672b5d669bfd"
+      }
+    },
+    "browser-check": {
+      "status": "fail",
+      "exitCode": 1,
+      "durationMs": 14562,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\CARREFOUR\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "browser-check",
+        "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html",
+        "--json",
+        "--require-provenance"
+      ],
+      "execution": "in-process",
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": false,
+        "command": "browser-check",
+        "evidenceKind": "automated-browser",
+        "status": "fail",
+        "visualReview": "not-requested",
+        "provenance": "current",
+        "deliveryReceiptId": "44ff9dd0-59d4-4200-a3dd-672b5d669bfd",
+        "artifact": {
+          "path": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html",
+          "sha256": "e77fa82ca495abab0a455396487202338c89410f9e3479bd496546fbab797e98",
+          "bytes": 846954
+        },
+        "state": {
+          "detail": "read",
+          "motion": "still"
+        },
+        "chrome": {
+          "status": "available",
+          "executable": "C:\\Users\\CARREFOUR\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"
+        },
+        "diagnostics": [
+          {
+            "code": "viewer/temp-cleanup-incomplete",
+            "severity": "error",
+            "message": "Browser cleanup could not safely finish; inspect the reported retained path.",
+            "subject": {
+              "artifact": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html"
+            },
+            "evidence": {
+              "reason": "Chrome did not exit; retained temporary profile \"C:\\Users\\CARREFOUR\\AppData\\Local\\Temp\\archify-visual-check-profile-lAHTOv\".",
+              "retainedDirectory": "C:\\Users\\CARREFOUR\\AppData\\Local\\Temp\\archify-visual-check-profile-lAHTOv"
+            },
+            "supportedFixes": [
+              "resolve the reported process or filesystem failure; verify directory ownership before manual cleanup"
+            ]
+          }
+        ],
+        "containment": {
+          "status": "fail",
+          "policy": "fit-or-reader-declared-readable-vertical-scroll",
+          "viewports": []
+        },
+        "themeStates": {
+          "status": "fail",
+          "viewports": []
+        },
+        "readability": {
+          "status": "fail",
+          "minimumProjectedNodeTextPx": 6,
+          "viewports": []
+        },
+        "viewerChrome": {
+          "status": "fail",
+          "viewports": []
+        },
+        "captures": {
+          "status": "not-requested",
+          "screenshots": [],
+          "contactSheet": null
+        },
+        "sidecars": {
+          "receipt": "it-governance-flow.browser-check.json",
+          "files": []
+        },
+        "error": "Chrome did not exit; retained temporary profile \"C:\\Users\\CARREFOUR\\AppData\\Local\\Temp\\archify-visual-check-profile-lAHTOv\"."
+      }
     }
   },
   "browserCheck": {
@@ -108,54 +328,30 @@
   },
   "diagnostics": [
     {
-      "code": "workflow/route-preset-conflict",
+      "code": "viewer/temp-cleanup-incomplete",
       "severity": "error",
-      "message": "Workflow edge \"reject-intent\" cannot satisfy route preset \"return-left\": candidate violates perpendicular endpoint-side direction.",
+      "message": "Browser cleanup could not safely finish; inspect the reported retained path.",
       "subject": {
-        "diagramType": "workflow",
-        "edge": "reject-intent",
-        "from": "reject",
-        "to": "intent",
-        "route": "return-left"
+        "artifact": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html"
       },
       "evidence": {
-        "invariant": "perpendicular endpoint-side direction",
-        "attemptedCandidateFamily": "return-left",
-        "points": [
-          [
-            384.6,
-            378
-          ],
-          [
-            347.6,
-            378
-          ],
-          [
-            347.6,
-            286
-          ],
-          [
-            450.6,
-            286
-          ]
-        ],
-        "fromSide": "left",
-        "toSide": "bottom",
-        "requiredEndpointStubPx": 8,
-        "requiredInteriorSegmentPx": 16,
-        "requiredDirectClearancePx": 28
+        "reason": "Chrome did not exit; retained temporary profile \"C:\\Users\\CARREFOUR\\AppData\\Local\\Temp\\archify-visual-check-profile-lAHTOv\".",
+        "retainedDirectory": "C:\\Users\\CARREFOUR\\AppData\\Local\\Temp\\archify-visual-check-profile-lAHTOv"
       },
-      "supportedFixes": []
+      "supportedFixes": [
+        "resolve the reported process or filesystem failure; verify directory ownership before manual cleanup"
+      ]
     }
   ],
   "evidence": {
     "receipt": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.finalize.json",
-    "summaryReceipt": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.finalize-summary.json"
+    "summaryReceipt": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.finalize-summary.json",
+    "browserCheckReceipt": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.browser-check.json"
   },
   "visualReview": "not-requested",
-  "failedStage": "validate",
-  "finishedAt": "2026-11-26T14:45:07.495Z",
-  "durationMs": 18047,
+  "failedStage": "browser-check",
+  "finishedAt": "2026-11-26T14:52:16.402Z",
+  "durationMs": 25587,
   "update": {
     "status": "update_available",
     "installedVersion": "3.2.0",

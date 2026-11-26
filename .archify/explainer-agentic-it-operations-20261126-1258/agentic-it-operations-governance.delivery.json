@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "b15bd92a-80ca-4309-904a-6e13c84cb9b3",
+  "status": "current",
+  "command": "deliver",
+  "type": "explainer",
+  "input": "C:\\projects\\agentic-e2e-governance\\.archify\\explainer-agentic-it-operations-20261126-1258\\candidate.archify.md",
+  "output": "C:\\projects\\agentic-e2e-governance\\.archify\\explainer-agentic-it-operations-20261126-1258\\agentic-it-operations-governance.html",
+  "specification": {
+    "sha256": "089c64c5692d98469b59b9e080a2b632168bc890e337126a2a451f5996eb93c9",
+    "bytes": 1920
+  },
+  "artifact": {
+    "sha256": "447d36a96cf09c883fe32ba526e2c3f7c8240420c50f49bf25d764b215d61abe",
+    "bytes": 574290
+  },
+  "explainer": {
+    "preparedSha256": "cc3beaf0ef3040f82f9dd76eac44db9d6c031636a6d16677f03015ed82ee7db1",
+    "dependencies": [
+      {
+        "kind": "diagram-spec",
+        "id": "diagram-4d5802ef5d13",
+        "path": "C:\\projects\\agentic-e2e-governance\\.archify\\explainer-agentic-it-operations-20261126-1258\\flow.json",
+        "relativePath": "flow.json",
+        "sha256": "2f57f49ac78aedd78581ec6be224fe65e958c773485cb33a5ca267f53360f309",
+        "bytes": 5598
+      }
+    ]
+  }
+}

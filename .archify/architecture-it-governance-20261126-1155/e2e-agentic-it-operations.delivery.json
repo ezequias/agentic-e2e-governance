@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "8689f565-fb19-47a4-bd70-6c3c8e0fb329",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\projects\\agentic-e2e-governance\\.archify\\architecture-it-governance-20261126-1155\\overview-candidate.json",
+  "output": "C:\\projects\\agentic-e2e-governance\\.archify\\architecture-it-governance-20261126-1155\\e2e-agentic-it-operations.html",
+  "specification": {
+    "sha256": "3e292771b57695a06cdaa94d17bd02a0ced54b5ad915aa28cb5c0e86f6cc6d69",
+    "bytes": 3283
+  },
+  "artifact": {
+    "sha256": "a0c8b1ecaeca885454cb3c12e98ac17678b3f9a1c8214942a1d348e01e91ff82",
+    "bytes": 839633
+  }
+}

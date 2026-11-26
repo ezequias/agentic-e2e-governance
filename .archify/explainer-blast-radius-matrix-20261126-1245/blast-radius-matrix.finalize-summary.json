@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "explainer",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\projects\\agentic-e2e-governance\\.archify\\explainer-blast-radius-matrix-20261126-1245\\candidate.archify.md",
+    "sha256": "2b3946f7a9fa34d2e1fa3887b7712cfca07dd9cf25f92072e8e5b8f1b0e8a5ce",
+    "bytes": 1825
+  },
+  "artifact": {
+    "path": "C:\\projects\\agentic-e2e-governance\\.archify\\explainer-blast-radius-matrix-20261126-1245\\blast-radius-matrix.html",
+    "sha256": "4fc51a6af4b478636e2dab196454e6f4ed1391152cc4dc8909c60268544589e3",
+    "bytes": 144054
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "not-run"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\projects\\agentic-e2e-governance\\.archify\\explainer-blast-radius-matrix-20261126-1245\\blast-radius-matrix.finalize.json",
+    "summaryReceipt": "C:\\projects\\agentic-e2e-governance\\.archify\\explainer-blast-radius-matrix-20261126-1245\\blast-radius-matrix.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 5527,
+  "browserCheck": {
+    "requested": false,
+    "ran": false
+  }
+}

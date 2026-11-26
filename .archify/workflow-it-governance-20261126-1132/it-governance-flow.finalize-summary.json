@@ -7,58 +7,36 @@
   "quality": "showcase",
   "specification": {
     "path": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\candidate.json",
-    "sha256": "7929f5b3f9d830b7f03a5637a505372299c927aae444c93e9ce2735000633160",
-    "bytes": 7397
+    "sha256": "2f57f49ac78aedd78581ec6be224fe65e958c773485cb33a5ca267f53360f309",
+    "bytes": 5598
   },
   "artifact": {
-    "path": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html"
+    "path": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html",
+    "sha256": "e77fa82ca495abab0a455396487202338c89410f9e3479bd496546fbab797e98",
+    "bytes": 846954
   },
   "gates": {
-    "validate": "fail",
-    "deliver": "not-run",
-    "check": "not-run",
-    "browser-check": "not-run"
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "fail"
   },
-  "failedStage": "validate",
+  "failedStage": "browser-check",
   "diagnostics": [
     {
-      "code": "workflow/route-preset-conflict",
+      "code": "viewer/temp-cleanup-incomplete",
       "severity": "error",
-      "message": "Workflow edge \"reject-intent\" cannot satisfy route preset \"return-left\": candidate violates perpendicular endpoint-side direction.",
+      "message": "Browser cleanup could not safely finish; inspect the reported retained path.",
       "subject": {
-        "diagramType": "workflow",
-        "edge": "reject-intent",
-        "from": "reject",
-        "to": "intent",
-        "route": "return-left"
+        "artifact": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.html"
       },
       "evidence": {
-        "invariant": "perpendicular endpoint-side direction",
-        "attemptedCandidateFamily": "return-left",
-        "points": [
-          [
-            384.6,
-            378
-          ],
-          [
-            347.6,
-            378
-          ],
-          [
-            347.6,
-            286
-          ],
-          [
-            450.6,
-            286
-          ]
-        ],
-        "fromSide": "left",
-        "toSide": "bottom",
-        "requiredEndpointStubPx": 8,
-        "requiredInteriorSegmentPx": 16,
-        "requiredDirectClearancePx": 28
-      }
+        "reason": "Chrome did not exit; retained temporary profile \"C:\\Users\\CARREFOUR\\AppData\\Local\\Temp\\archify-visual-check-profile-lAHTOv\".",
+        "retainedDirectory": "C:\\Users\\CARREFOUR\\AppData\\Local\\Temp\\archify-visual-check-profile-lAHTOv"
+      },
+      "supportedFixes": [
+        "resolve the reported process or filesystem failure; verify directory ownership before manual cleanup"
+      ]
     }
   ],
   "diagnosticSummary": {
@@ -68,7 +46,8 @@
   },
   "evidence": {
     "receipt": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.finalize.json",
-    "summaryReceipt": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.finalize-summary.json"
+    "summaryReceipt": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.finalize-summary.json",
+    "browserCheckReceipt": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\it-governance-flow.browser-check.json"
   },
   "update": {
     "status": "update_available",
@@ -84,15 +63,9 @@
     "eventKey": "archify@sha256:b92b4d55446966fd74e5338a45d6de9a7a1b194420cd5eb14d2cdc39f1053b80"
   },
   "visualReview": "not-requested",
-  "durationMs": 18047,
+  "durationMs": 25587,
   "browserCheck": {
     "requested": true,
     "ran": false
-  },
-  "nextAction": {
-    "action": "edit-in-place",
-    "candidate": "C:\\projects\\agentic-e2e-governance\\.archify\\workflow-it-governance-20261126-1132\\candidate.json",
-    "constraint": "Preserve unaffected semantics and geometry; apply each diagnostic's supportedFixes, or the fix its message names, and do not replace the whole candidate.",
-    "then": "finalize-once"
   }
 }

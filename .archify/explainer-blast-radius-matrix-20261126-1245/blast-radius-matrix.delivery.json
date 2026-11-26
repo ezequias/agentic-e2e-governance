@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "027458d1-bc6d-4035-bae5-67bf599c9061",
+  "status": "current",
+  "command": "deliver",
+  "type": "explainer",
+  "input": "C:\\projects\\agentic-e2e-governance\\.archify\\explainer-blast-radius-matrix-20261126-1245\\candidate.archify.md",
+  "output": "C:\\projects\\agentic-e2e-governance\\.archify\\explainer-blast-radius-matrix-20261126-1245\\blast-radius-matrix.html",
+  "specification": {
+    "sha256": "2b3946f7a9fa34d2e1fa3887b7712cfca07dd9cf25f92072e8e5b8f1b0e8a5ce",
+    "bytes": 1825
+  },
+  "artifact": {
+    "sha256": "4fc51a6af4b478636e2dab196454e6f4ed1391152cc4dc8909c60268544589e3",
+    "bytes": 144054
+  },
+  "explainer": {
+    "preparedSha256": "e1ec724948f873ebdb5ee386a99fa2c71b86626dff84ac908b50ebb3c3b18ac0",
+    "dependencies": []
+  }
+}

@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "E2E Agentic IT Operations Architecture",
+    "animation": "trace",
+    "visual_preset": "blueprint",
+    "quality_profile": "showcase",
+    "output": ".archify/architecture-it-governance-20261126-1155/e2e-agentic-it-operations.html"
+  },
+  "components": [
+    {
+      "id": "operator",
+      "type": "external",
+      "label": "Operator / Channel",
+      "sublabel": "chat, webhook, email",
+      "pos": [40, 190],
+      "size": [130, 64]
+    },
+    {
+      "id": "n8n",
+      "type": "frontend",
+      "label": "n8n",
+      "sublabel": "entry + preprocessing",
+      "pos": [210, 190],
+      "size": [130, 64],
+      "tag": "open source"
+    },
+    {
+      "id": "temporal",
+      "type": "backend",
+      "label": "Temporal",
+      "sublabel": "durable workflow state",
+      "pos": [210, 350],
+      "size": [130, 64],
+      "tag": "Human Gate"
+    },
+    {
+      "id": "litellm",
+      "type": "backend",
+      "label": "LiteLLM + vLLM",
+      "sublabel": "model router",
+      "pos": [390, 190],
+      "size": [150, 64],
+      "tag": "probabilistic"
+    },
+    {
+      "id": "intent",
+      "type": "backend",
+      "label": "Intent Generator",
+      "sublabel": "SLM / LLM JSON proposal",
+      "pos": [320, 90],
+      "size": [150, 64],
+      "tag": "untrusted"
+    },
+    {
+      "id": "triage",
+      "type": "security",
+      "label": "Triage",
+      "sublabel": "Blast Radius + routing",
+      "pos": [590, 90],
+      "size": [140, 64]
+    },
+    {
+      "id": "inspect",
+      "type": "security",
+      "label": "Inspect",
+      "sublabel": "Pydantic + sanitize",
+      "pos": [770, 90],
+      "size": [140, 64]
+    },
+    {
+      "id": "hitl",
+      "type": "security",
+      "label": "Dry-Run + HITL",
+      "sublabel": "approve or reject",
+      "pos": [950, 90],
+      "size": [150, 64],
+      "tag": "medium / high risk"
+    },
+    {
+      "id": "mcp",
+      "type": "messagebus",
+      "label": "MCP / Typed Connectors",
+      "sublabel": "validated tools",
+      "pos": [950, 240],
+      "size": [150, 64],
+      "tag": "deterministic"
+    },
+    {
+      "id": "targets",
+      "type": "cloud",
+      "label": "Enterprise Targets",
+      "sublabel": "ERP, APIs, messaging",
+      "pos": [950, 530],
+      "size": [150, 64]
+    },
+    {
+      "id": "state",
+      "type": "database",
+      "label": "PostgreSQL / pgvector",
+      "sublabel": "state + RAG context",
+      "pos": [390, 400],
+      "size": [150, 64]
+    },
+    {
+      "id": "otel",
+      "type": "cloud",
+      "label": "OpenTelemetry",
+      "sublabel": "traces + spans",
+      "pos": [590, 400],
+      "size": [140, 64]
+    },
+    {
+      "id": "clickhouse",
+      "type": "database",
+      "label": "ClickHouse",
+      "sublabel": "immutable audit",
+      "pos": [770, 400],
+      "size": [140, 64]
+    },
+    {
+      "id": "dagster",
+      "type": "backend",
+      "label": "Dagster",
+      "sublabel": "data assets + RAG",
+      "pos": [590, 530],
+      "size": [140, 64]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "security-group",
+      "label": "Corporate ingress",
+      "wraps": ["n8n"],
+      "pad": 18
+    },
+    {
+      "kind": "region",
+      "label": "Probabilistic reasoning zone",
+      "wraps": ["litellm", "intent"],
+      "pad": 18
+    },
+    {
+      "kind": "security-group",
+      "label": "Deterministic containment & governance",
+      "wraps": ["triage", "inspect", "hitl"],
+      "pad": 18
+    },
+    {
+      "kind": "security-group",
+      "label": "Execution boundary",
+      "wraps": ["mcp", "targets"],
+      "pad": 18
+    },
+    {
+      "kind": "region",
+      "label": "State, audit & observability",
+      "wraps": ["temporal", "state", "otel", "clickhouse", "dagster"],
+      "pad": 20
+    }
+  ],
+  "connections": [
+    {
+      "from": "operator",
+      "to": "n8n",
+      "label": "operation request",
+      "variant": "emphasis"
+    },
+    {
+      "from": "n8n",
+      "to": "temporal",
+      "label": "start workflow",
+      "variant": "dashed",
+      "route": "orthogonal-v"
+    },
+    {
+      "from": "n8n",
+      "to": "litellm",
+      "variant": "emphasis"
+    },
+    {
+      "from": "litellm",
+      "to": "intent",
+      "label": "model inference",
+      "variant": "emphasis",
+      "route": "orthogonal-v"
+    },
+    {
+      "from": "intent",
+      "to": "triage",
+      "label": "intent JSON",
+      "variant": "emphasis"
+    },
+    {
+      "from": "triage",
+      "to": "inspect",
+      "label": "blast radius",
+      "variant": "security"
+    },
+    {
+      "from": "inspect",
+      "to": "hitl",
+      "label": "validated payload",
+      "variant": "security"
+    },
+    {
+      "from": "hitl",
+      "to": "mcp",
+      "label": "authorization",
+      "variant": "security",
+      "route": "orthogonal-v"
+    },
+    {
+      "from": "mcp",
+      "to": "targets",
+      "label": "typed mutation",
+      "variant": "emphasis",
+      "route": "orthogonal-v"
+    },
+    {
+      "from": "state",
+      "to": "intent",
+      "label": "factual context",
+      "variant": "dashed"
+    },
+    {
+      "from": "targets",
+      "to": "state",
+      "label": "state update",
+      "variant": "dashed"
+    },
+    {
+      "from": "temporal",
+      "to": "state",
+      "label": "checkpoint",
+      "variant": "dashed",
+      "route": "orthogonal-v"
+    },
+    {
+      "from": "triage",
+      "to": "otel",
+      "label": "trace spans",
+      "variant": "dashed",
+      "route": "orthogonal-v"
+    },
+    {
+      "from": "otel",
+      "to": "clickhouse",
+      "label": "audit telemetry",
+      "variant": "dashed"
+    },
+    {
+      "from": "state",
+      "to": "dagster",
+      "label": "RAG assets",
+      "variant": "dashed",
+      "route": "orthogonal-v"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "Containment",
+      "items": [
+        "LLMs generate proposals only",
+        "Mutations require Pydantic validation",
+        "Medium and high risk require durable HITL"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "LLM-Agnostic Stack",
+      "items": [
+        "LiteLLM unifies model access",
+        "PydanticAI defines the deterministic gate",
+        "MCP separates tools from reasoning"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Audit & Replay",
+      "items": [
+        "Temporal preserves Human Gate state",
+        "OTel propagates trace and span IDs",
+        "ClickHouse records immutable evidence"
+      ]
+    }
+  ]
+}

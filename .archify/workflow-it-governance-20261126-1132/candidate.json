@@ -89,8 +89,7 @@
     "triage",
     "inspect",
     "hitl",
-    "action",
-    "audit"
+    "action"
   ],
   "nodes": [
     {
@@ -168,34 +167,6 @@
       "label": "Immutable Audit",
       "sublabel": "Trace, spans, events",
       "width": 132
-    },
-    {
-      "id": "reject",
-      "lane": "customs",
-      "col": 2,
-      "type": "security",
-      "label": "Reject / Correct",
-      "sublabel": "Schema loop or policy stop",
-      "tag": "no execution",
-      "width": 132
-    },
-    {
-      "id": "read_only",
-      "lane": "reasoning",
-      "col": 5,
-      "type": "backend",
-      "label": "Read-Only Result",
-      "sublabel": "Autonomous low risk",
-      "width": 150
-    },
-    {
-      "id": "trace",
-      "lane": "execution",
-      "col": 2,
-      "type": "database",
-      "label": "Temporal Checkpoint",
-      "sublabel": "Durable workflow state",
-      "width": 150
     }
   ],
   "edges": [
@@ -255,52 +226,6 @@
       "label": "refresh source of truth",
       "variant": "dashed",
       "role": "return"
-    },
-    {
-      "id": "triage-read",
-      "from": "triage",
-      "to": "read_only",
-      "label": "read-only",
-      "variant": "default",
-      "role": "branch"
-    },
-    {
-      "id": "inspect-reject",
-      "from": "inspect",
-      "to": "reject",
-      "label": "schema failure",
-      "variant": "security",
-      "role": "error"
-    },
-    {
-      "id": "hitl-reject",
-      "from": "hitl",
-      "to": "reject",
-      "label": "deny / dry-run conflict",
-      "variant": "security",
-      "role": "error"
-    },
-    {
-      "id": "reject-intent",
-      "from": "reject",
-      "to": "intent",
-      "label": "auto-correct",
-      "variant": "dashed",
-      "role": "return"
-    },
-    {
-      "id": "checkpoint-audit",
-      "from": "trace",
-      "to": "audit",
-      "label": "correlate trace",
-      "variant": "dashed"
-    },
-    {
-      "id": "workflow-checkpoint",
-      "from": "triage",
-      "to": "trace",
-      "label": "persist state",
-      "variant": "dashed"
     }
   ],
   "cards": [
