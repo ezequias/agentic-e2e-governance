@@ -133,10 +133,10 @@ This screenshot brings together the Archify governance explainer, blast-radius m
 
 Open each interactive view:
 
-- [Agentic IT Operations Governance Explainer](docs/interactive/agentic-it-operations-governance.html)
-- [Blast Radius vs. Agent Autonomy Matrix](docs/interactive/blast-radius-matrix.html)
-- [E2E Agentic Governance Overview](docs/interactive/e2e-agentic-it-operations.html)
-- [Agentic IT Operations Governance Flow](docs/interactive/it-governance-flow.html)
+- [Agentic IT Operations Governance Explainer](https://ezequias.github.io/agentic-e2e-governance/docs/interactive/agentic-it-operations-governance.html)
+- [Blast Radius vs. Agent Autonomy Matrix](https://github.com/ezequias/agentic-e2e-governance/docs/interactive/blast-radius-matrix.html)
+- [E2E Agentic Governance Overview](https://github.com/ezequias/agentic-e2e-governance/docs/interactive/e2e-agentic-it-operations.html)
+- [Agentic IT Operations Governance Flow](https://github.com/ezequias/agentic-e2e-governance/docs/interactive/it-governance-flow.html)
 
 ![Archify previews of the governance explainer, matrix, architecture overview, and workflow](screenshot.png)
 
