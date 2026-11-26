@@ -131,6 +131,13 @@ specification.md   # Full architecture and governance rationale
 
 This screenshot brings together the Archify governance explainer, blast-radius matrix, architecture overview, and operational workflow.
 
+Open each interactive view:
+
+- [Agentic IT Operations Governance Explainer](.archify/explainer-agentic-it-operations-20261126-1258/agentic-it-operations-governance.html)
+- [Blast Radius vs. Agent Autonomy Matrix](.archify/explainer-blast-radius-matrix-20261126-1245/blast-radius-matrix.html)
+- [E2E Agentic Governance Overview](.archify/architecture-it-governance-20261126-1155/e2e-agentic-it-operations.html)
+- [Agentic IT Operations Governance Flow](.archify/workflow-it-governance-20261126-1132/it-governance-flow.html)
+
 ![Archify previews of the governance explainer, matrix, architecture overview, and workflow](screenshot.png)
 
 ## Next implementation milestones
